@@ -1,0 +1,83 @@
+
+html, body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  height: 100%;
+  background-color: #242424;
+  color: #FFFFFF;
+  font-size: 12px;
+}
+
+#room-info {
+  position: absolute;
+  left: 40%;
+  top: 1%;
+  height: 97%;
+  width: 25%;
+}
+
+#menu {
+  position: absolute;
+  left: 76%;
+  top: 1%;
+  height: 97%;
+  width: 23%;
+}
+
+#github {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: #AAAAAA;
+}
+
+#author {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: #FFFFFF;
+}
+
+#mycanvas {
+  margin-top: 0px;
+}
+
+#thick, #rota, #bsize, #redtxt, #gretxt, #blutxt, #alphatxt{
+  height: 14px;
+  width: 50px;
+  margin-top:-9px;
+  font-size: 10px;
+}
+
+#alpha{
+  width:100%;
+}
+
+select {
+  font-size: 12px;
+}
+
+form {
+  margin-left: 5px;
+  margin-top: -10px;
+}
+
+span {
+  font-size: 10px;
+  margin-top: -7px;
+}
+
+legend {
+  color: white;
+}
+
+#coltxt, #brushSelection, tr {
+  width: 70%;
+  height:20px;
+  margin-top: -5px;
+}
+
+#paletteSelection, #trailSelection{
+  width: 50%;
+  height: 20px;
+  margin-top: -5px;
+}
+
+#craze-btn {
+  color: #A70000;
+}

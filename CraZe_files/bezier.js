@@ -70,18 +70,24 @@ var p0 = new point(); var p1 = new point(); var p2 = new point(); var p3 = new p
 // Objects to hold final values
 var pout = new Object(); var anchors = new Object(); var handles = new Object();
 var count = 0;      // Counter
-var curveIncrement; // Variable to hold increment amount for each curve segment
+var curveIncrement = 0; // Variable to hold increment amount for each curve segment
  
 ///////////////////////
 // Main Program Loop //
 ///////////////////////
- 
-function (__structure Point, __structure Anchors, __structure Handles)
-            main
-        (__boolean Draw, __index CurveSteps, __number CurveMaxLength, __number CurveMaxTension,
-         __boolean Scribbley, __number ScribbleAmt, __boolean Jump,
-         __number dummy)
-{
+var Draw, CurveSteps, CurveMaxLength, CurveMaxTension, Scribbley, ScribbleAmt, Jump, dummy;
+var _testMode = false;
+Draw = true;
+CurveSteps = 100;
+CurveMaxLength = 10;
+CurveMaxTension = 10;
+Scribbley = false;
+ScribbleAmt = 10;
+
+// function (__structure Point, __structure Anchors, __structure Handles)
+function main(){   
+
+    _testMode = false;
  
     if(_testMode) {
      

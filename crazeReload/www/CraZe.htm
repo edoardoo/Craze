@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<!-- saved from url=(0028)https://craze.herokuapp.com/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <title> CraZe </title>
+    <script src="./CraZe_files/socket.io.js" type="text/javascript"></script>
+    <link href="./CraZe_files/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="./CraZe_files/styles.css" rel="stylesheet" type="text/css">
+    <script src="./CraZe_files/jquery-1.8.3.min.js" type="text/javascript"></script>
+    <script src="./CraZe_files/craze.js" type="text/javascript"></script>
+    <script src="./CraZe_files/craze_ui.js" type="text/javascript"></script>
+    <script src="./CraZe_files/drawingmaths.js" type="text/javascript"></script>
+    <script src="./CraZe_files/bezier.js" type="text/javascript"></script>
+  <style type="text/css"></style></head>
+
+  <body>
+    <canvas height="853" width="693"></canvas>
+   
+    <div id="menu">
+      <form id="formCraze" name="formCraze">
+        <fieldset>
+          <legend>CraZe</legend>
+          <!--Checkboxes-->
+          <table cellpadding="0">
+            <tbody><tr>
+              <td>Brush &nbsp;
+                <select id="brushSelection" name="brushSelection">
+                  <option value="1">Regular Line</option>
+                  <option value="2">Lines From Start</option>
+                  <option value="3">Vertical Lines</option>
+                  <option value="4">Horizontal Lines</option>
+                  <option value="5">Great Cross</option>
+                  <option value="6">Triangles</option>
+                  <option value="7">Squares</option>
+                  <option value="8">Circles</option>
+                  <option value="9">Chain</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td> Enable Symmetry </td>
+              <td> <input type="checkbox" id="symmetry" name="symmetry" checked=""> </td>
+            </tr>
+            <tr>
+              <td colspan="2"> <span class="help-block">This enables use of symmetry axis</span> </td>
+            </tr>
+            <tr>
+              <td> Variable Size </td>
+              <td> <input type="checkbox" id="variable" name="variable"> </td>
+            </tr>
+            <tr>
+              <td colspan="2"> <span class="help-block">This makes the brush vary in size</span> </td>
+            </tr>
+            <tr>
+              <td> Rotating Brush </td>
+              <td> <input type="checkbox" id="rotating" name="rotating"> </td>
+            </tr>
+            <tr>
+              <td colspan="2"> <span class="help-block">This makes the brush rotate on itself</span> </td>
+            </tr>
+            <tr>
+              <td> Connect Borders </td>
+              <td> <input type="checkbox" name="connect" id="connect"> </td>
+            </tr>
+            <tr>
+              <td colspan="2"> <span class="help-block">This connects the borders of the brush</span> </td>
+            </tr>
+            <tr>
+              <td> Brush Fill </td>
+              <td> <input type="checkbox" name="fill" id="fill"> </td>
+            </tr>
+            <tr>
+              <td colspan="2"> <span class="help-block">This fills the brush shape</span> </td>
+            </tr>
+
+            <tr>
+              <td> Enable Fader </td>
+              <td> <input type="checkbox" name="fade" id="fade" checked=""> </td>
+            </tr>
+            <tr>
+              <td colspan="2"> <span class="help-block">This makes the drawing fade</span> </td>
+            </tr>
+            <tr>
+              <td> Fit to Grid </td>
+              <td> <input type="checkbox" name="grid" id="grid"> </td>
+            </tr>
+            <tr>
+              <td colspan="2"> <span class="help-block">This fits shapes within a grid</span> </td>
+            </tr>
+            <tr>
+              <td colspan="2">Color Palette &nbsp;
+                <select id="paletteSelection" name="paletteSelection">
+                  <option value="1">Normal</option>
+                  <option value="2" selected="">Rainbow</option>
+                  <option value="3">Fire</option>
+                  <option value="4">Ice</option>
+                  <option value="5">Nature</option>
+                  <option value="6">Mystic</option>
+                  <option value="7">Borealis</option>
+                  <option value="8">Grayscale</option>
+                  <option value="9">Foxes</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2"> <span class="help-block">Many palettes of colors to choose from</span> </td>
+            </tr>
+            <!--Spinners-->
+            <tr>
+              <td>Number of Rotations</td>
+              <td><input type="number" name="rotnum" id="rota" min="1" max="360" step="1" value="7"></td>
+            </tr>
+            <tr>
+              <td>Brush Thickness</td>
+              <td><input type="number" name="thick" id="thick" min="1" max="7" step="1" value="1"></td>
+            </tr>
+            <tr>
+              <td>Brush Size</td>
+              <td><input type="number" name="bsize" id="bsize" min="1" max="1742" step="1" value="42"></td>
+            </tr>
+            <tr>
+              <td>R<input type="range" name="red" id="red" min="0" max="255" value="255"></td>
+              <td><input type="number" name="redtxt" id="redtxt" min="0" max="255" step="1" value="255"></td>
+            </tr>
+            <tr>
+              <td>G<input type="range" name="gre" id="gre" min="0" max="255" value="255"></td>
+              <td><input type="number" name="gretxt" id="gretxt" min="0" max="255" step="1" value="255"></td>
+            </tr>
+            <tr>
+              <td>B<input type="range" name="blu" id="blu" min="0" max="255" value="255"></td>
+              <td><input type="number" name="blutxt" id="blutxt" min="0" max="255" step="1" value="255"></td>
+            </tr>
+            <tr>
+              <td colspan="2">
+              <table>
+                <tbody><tr>
+                  <td>Transparency &nbsp;&nbsp;&nbsp;</td><td><input type="range" name="alpha" id="alpha" min="0" max="100" value="100"></td>
+                  <td>&nbsp;<input type="number" name="alphatxt" id="alphatxt" min="0" max="100" step="1" value="100"></td>
+                </tr>
+              </tbody></table>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <table>
+                  <tbody><tr>
+                    <td> Color &nbsp; <input type="text" id="coltxt" name="coltxt" readonly="readonly"></td>
+                  </tr>
+                </tbody></table>
+            </td></tr>
+          </tbody></table>
+        </fieldset>
+      </form>
+    </div>
+    <div>
+        <table>
+        <tbody><tr><td><button class="btn" id="myname" name="nickName">Nickname: Guest2</button></td>
+        <td><button class="btn" id="myroom" name="joinRoom">Room: Lobby</button></td>
+        <td><button class="btn" id="getUsers" name="getUsers">Get Users in Room</button></td>
+        <td><button class="btn" id="newImage" name="newImage">New Image</button></td>
+        <td><button class="btn" name="saveImage" id="saveImage">Save Image</button></td>
+        <td colspan="2"> <button class="btn" name="craze-btn" id="craze-btn">CraZe</button></td>
+        <td><a id="github" href="https://github.com/Zubieta/CraZe_Web"> Project at Github! </a></td>
+        <td><a id="author" href="https://github.com/Zubieta/"> / Santiago Zubieta </a></td>
+        </tr></tbody></table>
+    </div>
+  
+
+</body></html>
